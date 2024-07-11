@@ -1,15 +1,16 @@
 pipeline{
     agent any
- environment{
+    
+    environment{
         PATH = "/opt/maven3/bin:$PATH"
-}
+    }
     stages{
-        stage("git checkout"){
+        stage("Git Checkout"){
             steps{
-                git branch: 'main', credentialsId: 'github', url: 'https://github.com/Ragubharathi/project'
+                git credentialsId: 'github', url: 'https://github.com/javahometech/myweb'
             }
         }
-       stage("Maven Build"){
+        stage("Maven Build"){
             steps{
                 sh "mvn clean package"
         }      
